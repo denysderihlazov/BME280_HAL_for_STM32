@@ -25,18 +25,34 @@ Begin by creating an STM32 HAL project, for which STM32CubeIDE is highly recomme
 As illustrated in the image above, for our BME280 sensor, it is sufficient to simply enable I2C2 and use the default setup:
 ![screenshot of I2C def. setup](https://github.com/denysderihlazov/BME280_HAL_for_STM32/blob/main/readme_screenshots/i2c2_setup2.png?raw=true)
 
-With I2C2 now configured, the next step is to create a libs folder and add it to the CubeIDE Paths. Right-click on your project name in the Project Explorer, select `New` -> `Folder`, and name your folder as desired (I named mine `libs`).
+With I2C2 now configured, the next step is to create a libs folder and add it to the CubeIDE Paths. Right-click on your project name in the Project Explorer, select `New` -> `Folder`:
+![screenshot of I2C def. setup](https://github.com/denysderihlazov/BME280_HAL_for_STM32/blob/main/readme_screenshots/new_libs_folder.png?raw=true)
+And name your folder as desired (I named mine `libs`):
+![screenshot of I2C def. setup](https://github.com/denysderihlazov/BME280_HAL_for_STM32/blob/main/readme_screenshots/new_libs_folder2.png?raw=true)
 
-When we have created our folder, we should add it to paths to make it vissible for CubeIDE and linker. You can siply do this by clicking right mouse button on your project name in Project Explorer and by choosing option `Properties` -> `Paths and Symbols` -> `Library Paths`, then click on `Add` button and check all 3 checkboxes, after that click on a `Workspace` button and in your current project find folder you have just created (in my case `libs`) , and the same for `Properties` -> `Paths and Symbols` -> `Source Location`.
+When we have created our folder, we should add it to paths to make it vissible for CubeIDE and linker. You can siply do this by clicking right mouse button on your project name in Project Explorer and by choosing option `Properties`:
+![screenshot of I2C def. setup](https://github.com/denysderihlazov/BME280_HAL_for_STM32/blob/main/readme_screenshots/adding_to_paths.png?raw=true)
+
+Then `Paths and Symbols` -> `Library Paths` then click on `Add` button:
+![screenshot of I2C def. setup](https://github.com/denysderihlazov/BME280_HAL_for_STM32/blob/main/readme_screenshots/adding_to_paths2.png?raw=true)
+
+And check all 3 checkboxes, after that click on a `Workspace` button:
+![screenshot of I2C def. setup](https://github.com/denysderihlazov/BME280_HAL_for_STM32/blob/main/readme_screenshots/adding_to_paths3.png?raw=true)
+
+And in your current project find folder you have just created (in my case `libs`):
+![screenshot of I2C def. setup](https://github.com/denysderihlazov/BME280_HAL_for_STM32/blob/main/readme_screenshots/adding_to_paths4.png?raw=true)
+
+And the same for `Properties` -> `Paths and Symbols` -> `Source Location`.
 
 After configuring the project just press on `Apply and Close` button. Next place the `bme280.c` and `bme280.h` files into the `libs` folder. Once you have done this, open your `main.c` file and include the library header. Make sure to include it after all HAL-specific includes:
 ```sh
 #include "bme280.h"
 ```
 As on the screenshot below:
+![screenshot of I2C def. setup](https://github.com/denysderihlazov/BME280_HAL_for_STM32/blob/main/readme_screenshots/adding_bme280_init.png?raw=true)
 
-Once you have completed all the above steps, add the `BME280_Init();` function to your `main.c` file or wherever appropriate in your code. In my example (though not recommended for production use), I've added it to the `while` loop just to demonstrate its functionality.
-
+Once you have completed all the above steps, add the `BME280_Init();` function to your `main.c` file or wherever appropriate in your code. In my example (though not recommended for production use), I've added it to the `while(1)` loop just to demonstrate its functionality:
+![screenshot of I2C def. setup](https://github.com/denysderihlazov/BME280_HAL_for_STM32/blob/main/readme_screenshots/init_bme280.png?raw=true)
 
 ## Features
  - Establishes a connection with the Bosch BME280 sensor and checks for successful communication.
