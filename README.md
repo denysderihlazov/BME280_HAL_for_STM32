@@ -40,22 +40,33 @@ And check all 3 checkboxes, after that click on a `Workspace` button:
 ![screenshot of I2C def. setup](https://github.com/denysderihlazov/BME280_HAL_for_STM32/blob/main/readme_screenshots/adding_to_paths3.png?raw=true)
 
 And in your current project find folder you have just created (in my case `libs`):
-![screenshot of I2C def. setup](https://github.com/denysderihlazov/BME280_HAL_for_STM32/blob/main/readme_screenshots/adding_to_paths4.png?raw=true)
+![screenshot of I2C def.setup](https://github.com/denysderihlazov/BME280_HAL_for_STM32/blob/main/readme_screenshots/adding_to_paths4.png?raw=true)
 
-And the same for `Properties` -> `Paths and Symbols` -> `Source Location`.
+And the same for `Properties` -> `Paths and Symbols` -> `Source Location` -> `Add Folder`:
+![screenshot of I2C def.setup](https://github.com/denysderihlazov/BME280_HAL_for_STM32/blob/main/readme_screenshots/Source_Location1.png?raw=true)
+
+Then choose your folder (for me it is `libs` folder). And click on `OK` button:
+![screenshot of I2C def.setup](https://github.com/denysderihlazov/BME280_HAL_for_STM32/blob/main/readme_screenshots/Source_Location2.png?raw=true)
 
 After configuring the project just press on `Apply and Close` button. Next place the `bme280.c` and `bme280.h` files into the `libs` folder. Once you have done this, open your `main.c` file and include the library header. Make sure to include it after all HAL-specific includes:
 ```sh
 #include "bme280.h"
 ```
 As on the screenshot below:
-![screenshot of I2C def. setup](https://github.com/denysderihlazov/BME280_HAL_for_STM32/blob/main/readme_screenshots/adding_bme280_init.png?raw=true)
+![screenshot of I2C def. setup](https://github.com/denysderihlazov/BME280_HAL_for_STM32/blob/main/readme_screenshots/include_bme280h.png?raw=true)
 
 Once you have completed all the above steps, add the `BME280_Init();` function to your `main.c` file or wherever appropriate in your code. In my example (though not recommended for production use), I've added it to the `while(1)` loop just to demonstrate its functionality:
 ![screenshot of I2C def. setup](https://github.com/denysderihlazov/BME280_HAL_for_STM32/blob/main/readme_screenshots/init_bme280.png?raw=true)
+
+Finally, to see your project in action, simply run it and upload it to the STM32 board. To view the results, you can use a console or an LCD screen if you have one connected.
+
+I also have a project with the same BME280 sensor and a WaveShare ILI9341 SPI 240×320, General 2.4inch LCD. As soon as I add it to my GitHub, I will include a link here.
 
 ## Features
  - Establishes a connection with the Bosch BME280 sensor and checks for successful communication.
  - Configures the BME280 sensor by writing to its setup registers.
  - Reads raw data and displays parameters such as temperature, humidity, and pressure.
  - Applies calibration to the raw data, providing real-time, accurate, and calibrated measurements.
+
+If you find this library helpful, please consider giving it a [star on my GitHub repository](https://github.com/denysderihlazov/BME280_HAL_for_STM32). 
+Your support is greatly appreciated and helps me to continue improving and developing more useful tools and libraries. Thank you!😊
